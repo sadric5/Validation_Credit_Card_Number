@@ -1,0 +1,29 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import sys
+import re
+lisd = []
+
+for line in sys.stdin:
+    lisd.append(line.strip("\n"))
+
+# for l in lisd[1:]:
+#     print(str(l))
+    
+def card_list(e):
+    r = re.compile(r'(3[-]?){4}').search(e) or re.compile(r'(1[-]?){4}').search(e) or re.compile(r'(2[-]?){4}').search(e) or re.compile(r'(3[-]?){4}').search(e) or re.compile(r'(4[-]?){4}').search(e) or re.compile(r'(5[-]?){4}').search(e) or re.compile(r'(6[-]?){4}').search(e) or re.compile(r'(7[-]?){4}').search(e) or re.compile(r'(8[-]?){4}').search(e) or re.compile(r'(9[-]?){4}').search(e)
+    ex = re.compile(r"^[546][0-9]{3}([-]?[0-9]{4}){3}$")
+    
+    return r, ex.search(e)
+    # return ex.search(e)
+
+
+for line in lisd[1:]:
+    result = card_list(str(line))
+    
+    if result[1] is not None and result[0] is None:
+        print("Valid")
+    else:
+        print("Invalid")
+    
+
+
